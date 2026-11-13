@@ -11,7 +11,8 @@ public class BoardManager {
     }
 
     public boolean checkValidMove(int spaceNum) {
-        if (boardMap.get(spaceNum - 1).equals(String.valueOf(spaceNum))) return true;
+        if (boardMap.get(spaceNum - 1).equals(String.valueOf(spaceNum)))
+            return true;
         return false;
     }
 
@@ -19,10 +20,13 @@ public class BoardManager {
         int x = 0;
         int o = 0;
         for (int i = 0; i < 9; i++) {
-            if (boardMap.get(i).equals("x")) x++;
-            if (boardMap.get(i).equals("o")) o++;
+            if (boardMap.get(i).equals("x"))
+                x++;
+            if (boardMap.get(i).equals("o"))
+                o++;
         }
-        if (x > o) return "o";
+        if (x > o)
+            return "o";
         return "x";
     }
 
@@ -31,8 +35,47 @@ public class BoardManager {
     }
 
     public String checkWin() {
-// NEXT STEP: MAKE LOGIC
+        if (boardMap.get(0).equals(boardMap.get(1)) && boardMap.get(1).equals(boardMap.get(2))
+                && boardMap.get(0).equals("x")
+                || boardMap.get(3).equals(boardMap.get(4)) && boardMap.get(4).equals(boardMap.get(5))
+                        && boardMap.get(3).equals("x")
+                || boardMap.get(6).equals(boardMap.get(7)) && boardMap.get(7).equals(boardMap.get(8))
+                        && boardMap.get(6).equals("x")
+                || boardMap.get(0).equals(boardMap.get(3)) && boardMap.get(3).equals(boardMap.get(6))
+                        && boardMap.get(0).equals("x")
+                || boardMap.get(1).equals(boardMap.get(4)) && boardMap.get(4).equals(boardMap.get(7))
+                        && boardMap.get(1).equals("x")
+                || boardMap.get(2).equals(boardMap.get(5)) && boardMap.get(5).equals(boardMap.get(8))
+                        && boardMap.get(2).equals("x")
+                || boardMap.get(0).equals(boardMap.get(4)) && boardMap.get(4).equals(boardMap.get(8))
+                        && boardMap.get(0).equals("x")
+                || boardMap.get(2).equals(boardMap.get(4)) && boardMap.get(4).equals(boardMap.get(6))
+                        && boardMap.get(2).equals("x")) {
+            return "x";
+        } else if (boardMap.get(0).equals(boardMap.get(1)) && boardMap.get(1).equals(boardMap.get(2))
+                && boardMap.get(0).equals("o")
+                || boardMap.get(3).equals(boardMap.get(4)) && boardMap.get(4).equals(boardMap.get(5))
+                        && boardMap.get(3).equals("o")
+                || boardMap.get(6).equals(boardMap.get(7)) && boardMap.get(7).equals(boardMap.get(8))
+                        && boardMap.get(6).equals("o")
+                || boardMap.get(0).equals(boardMap.get(3)) && boardMap.get(3).equals(boardMap.get(6))
+                        && boardMap.get(0).equals("o")
+                || boardMap.get(1).equals(boardMap.get(4)) && boardMap.get(4).equals(boardMap.get(7))
+                        && boardMap.get(1).equals("o")
+                || boardMap.get(2).equals(boardMap.get(5)) && boardMap.get(5).equals(boardMap.get(8))
+                        && boardMap.get(2).equals("o")
+                || boardMap.get(0).equals(boardMap.get(4)) && boardMap.get(4).equals(boardMap.get(8))
+                        && boardMap.get(0).equals("o")
+                || boardMap.get(2).equals(boardMap.get(4)) && boardMap.get(4).equals(boardMap.get(6))
+                        && boardMap.get(2).equals("o")) {
+            return "o";
+        }
+
         return "";
+    }
+
+    public List<String> getRawBoard(){
+        return boardMap;
     }
 
     public String toString() {
