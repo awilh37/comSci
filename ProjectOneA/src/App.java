@@ -37,6 +37,10 @@ public class App {
                 }
             }
         }
-        System.out.println("Player " + boardManage.checkWin() + " wins! ");
+        if (boardManage.checkWin().equals("cat")) {
+            System.out.println("Tie game!");
+        } else {
+            System.out.println("Player " + boardManage.checkWin() + " wins! ");
+        }
     }
 }
