@@ -32,6 +32,7 @@ public class BoardManager {
 
         public void makeMove(String player, int space) {
                 boardMap.set(space - 1, player);
+                System.out.println("Player " + player + " played spot " + space);
         }
 
         public String checkWin() {

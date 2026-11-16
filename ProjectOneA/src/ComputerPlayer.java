@@ -174,9 +174,9 @@ public class ComputerPlayer {
             }
         }
 
-        ///////////////////////////////////
+        /////////////////////////////////
         // make move based on not having to block
-        ///////////////////////////////////
+        /////////////////////////////////
 
         // take 9 if first move
         if (inputAvailableSpaces.size() == 9 && player.equals("x")) {
@@ -212,6 +212,67 @@ public class ComputerPlayer {
             }
             if (inputRawBoard.get(5).equals(player) || inputRawBoard.get(7).equals(player)) {
                 return 9;
+            }
+        }
+        // if possible, at least make a threat
+        System.out.println("Attempting to make a threat... ");
+        for (int i = 0; i < 9; i++) {
+            if (i == 0 || i == 1 || i == 2) {
+                System.out.println("Checking verticals... i = " + i);
+
+                if (inputRawBoard.get(i).equals(player)
+                        && inputRawBoard.get(i + 3).equals(String.valueOf(i + 3 + 1))
+                        && inputRawBoard.get(i + 6).equals(String.valueOf(i + 6 + 1))) {
+                    return i + 6 + 1;
+                }
+                if (inputRawBoard.get(i + 3).equals(player)
+                        && inputRawBoard.get(i).equals(String.valueOf(i + 1))
+                        && inputRawBoard.get(i + 6).equals(String.valueOf(i + 6 + 1))) {
+                    return i + 6 + 1;
+                }
+                if (inputRawBoard.get(i + 6).equals(player)
+                        && inputRawBoard.get(i + 3).equals(String.valueOf(i + 3 + 1))
+                        && inputRawBoard.get(i + 6).equals(String.valueOf(i + 1))) {
+                    return i + 1;
+                }
+            }
+            if (i == 0 || i == 3 || i == 6) {
+                System.out.println("Checking horizontals... i = " + i);
+
+                if (inputRawBoard.get(i).equals(player)
+                        && inputRawBoard.get(i + 1).equals(String.valueOf(i + 1 + 1))
+                        && inputRawBoard.get(i + 2).equals(String.valueOf(i + 2 + 1))) {
+                    return i + 2 + 1;
+                }
+                if (inputRawBoard.get(i + 1).equals(player)
+                        && inputRawBoard.get(i).equals(String.valueOf(i + 1))
+                        && inputRawBoard.get(i + 2).equals(String.valueOf(i + 2 + 1))) {
+                    return i + 2 + 1;
+                }
+                if (inputRawBoard.get(i + 2).equals(player)
+                        && inputRawBoard.get(i + 1).equals(String.valueOf(i + 1 + 1))
+                        && inputRawBoard.get(i).equals(String.valueOf(i + 1))) {
+                    return i + 1;
+                }
+            }
+            if (i == 0 || i == 6) {
+                System.out.println("Checking diagonals... i = " + i);
+
+                if (inputRawBoard.get(i).equals(player)
+                        && inputRawBoard.get(i + 4).equals(String.valueOf(i + 4 + 1))
+                        && inputRawBoard.get(i + 8).equals(String.valueOf(i + 8 + 1))) {
+                    return i + 8 + 1;
+                }
+                if (inputRawBoard.get(i + 4).equals(player)
+                        && inputRawBoard.get(i).equals(String.valueOf(i + 1))
+                        && inputRawBoard.get(i + 8).equals(String.valueOf(i + 8 + 1))) {
+                    return i + 8 + 1;
+                }
+                if (inputRawBoard.get(i + 8).equals(player)
+                        && inputRawBoard.get(i + 4).equals(String.valueOf(i + 4 + 1))
+                        && inputRawBoard.get(i).equals(String.valueOf(i + 1))) {
+                    return i + 1;
+                }
             }
         }
         // i think at this point all cases are covered, but if not pick random
